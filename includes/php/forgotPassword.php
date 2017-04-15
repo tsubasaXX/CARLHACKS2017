@@ -3,9 +3,10 @@
 	//SESSION_START();
 	
 	//include helpers class
-	include("includes/php/helper.php");
+	require_once 'db.class.php';
+	include 'helper.php';
 	
-	
+	echo "hello";
 	
 	// Create database object 
 	$db = new Database();
@@ -21,7 +22,8 @@
 		$token = hash('ripemd160', rand());
 		
 		//get the id of child you just made
-		$sql = "UPDATE `parent` SET `token` = '" . $token . "' WHERE `parent`.`email` = $emailAddress;";
+		$sql = "UPDATE `parent` SET `token` = '" . $token . "' WHERE `parent`.`email` = '$emailAddress'";
+		echo "SQL: " . $sql . "<br />";
 		//send SQL call
 		$r = mysqli_query($db->connection, $sql);
 		if($r){
@@ -31,10 +33,13 @@
 		}
 	}
 	
+	
 	//URL
-	$url = "http://localhost/carlhacks/Archive/inclides/php/forgotPasswordTokenPart.php?email=$emailAddress&token=$token";
+	$url = "http://localhost/carlhacks/Archive/includes/php/forgotPasswordTokenPart.php?email=$emailAddress&token=$token";
 	
-	$content = "<p>GO TO THIS LINK TO RESET YOUR PASSWORD: $url</p>"
+	$content = "<p>GO TO THIS LINK TO RESET YOUR PASSWORD: $url</p>";
 	
-	sendMail($emailAddress, $content);
+	echo $content;
+	
+	//sendMail($emailAddress, $content);
 ?>

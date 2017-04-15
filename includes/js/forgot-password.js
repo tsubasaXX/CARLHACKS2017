@@ -5,7 +5,7 @@ $(document).ready(function()
 	
 	// Create the button
 	form += createInput('Email Address', 'email', '', '', 'emailAddress', false, 'ie. john.smith@example.com', true);
-	form += createButton('Forgot Password!', '', 'forgotPassord');
+	form += createButton('Forgot Password!', '', 'forgotPassword');
 	
 	// End form
 	form += '</div>';
@@ -17,7 +17,7 @@ $(document).ready(function()
 	clearAttributes();
 	
 	// Event handler for sign up button being pressed
-	$('body').delegate('#forgotPassord', 'click', function()
+	$('body').delegate('#forgotPassword', 'click', function()
 	{
 		// Initialize error array
 		var errors = [];
